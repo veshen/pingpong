@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import {connect} from 'react-redux';
-import {addTodoListItem} from '../actions'
+import {addTodoListItem} from '../actions';
+import { Button } from 'antd';
 
 const page = ({toDoList, addTodoListItem}) => {
     const [ text, setText ] = useState("");
@@ -9,7 +10,7 @@ const page = ({toDoList, addTodoListItem}) => {
             <h1>Todo</h1>
             <div>
                 <input type="text"  onChange={ e => setText(e.target.value)  }/>
-                <button onClick={()=>addTodoListItem(text)}>Add</button>
+                <Button onClick={()=>addTodoListItem(text)}>Add</Button>
             </div>
             <ul>
                 {
