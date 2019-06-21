@@ -1,4 +1,4 @@
-import { delay, filter, mapTo, map, throttleTime } from 'rxjs/operators';
+import { delay, filter, mapTo, map } from 'rxjs/operators';
 
 export const pingEpic = action$ => action$.pipe(
     filter(action => action.type === 'PING'),
@@ -7,7 +7,6 @@ export const pingEpic = action$ => action$.pipe(
 );
 
 export const todolistEpic = action$ => action$.pipe(
-    filter(action => action.type === 'ADD_TODOLIST_ITEM'),
-    throttleTime(2000),
+    filter(action => action.type === 'ADD_TODOLIST_ITEM'&&action.payload.text),
     map(item => { return {...item.payload,type: 'ADD_TODOLIST_ITEM_RE'} }),
 );
